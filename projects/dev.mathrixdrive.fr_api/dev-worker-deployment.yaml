@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: drive-api-worker
+    app: drive-api
     environment: dev
     tier: backend
     type: worker
@@ -13,7 +13,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: drive-api-worker
+      app: drive-api
       environment: dev
       tier: backend
       type: worker
@@ -26,7 +26,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: drive-api-worker
+        app: drive-api
         environment: dev
         tier: backend
         type: worker

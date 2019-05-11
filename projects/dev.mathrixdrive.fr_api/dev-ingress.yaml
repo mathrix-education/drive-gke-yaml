@@ -40,7 +40,7 @@ metadata:
     app: drive-api
     environment: dev
     tier: backend
-  name: dev-education-api-ingress
+  name: dev-drive-api-ingress
   namespace: default
 spec:
   rules:
