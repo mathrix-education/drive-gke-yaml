@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dev-api-env-configmap
+data:
+  # Application
+  # -----------
+  APP_ENV: dev
+  APP_DEBUG: "true"
+  # APP_KEY: secret
+  APP_WEBROOT: https://dev.mathrixdrive.fr
+  APP_API: https://dev.mathrixdrive.fr/api
+  APP_CDN: https://dev.cdn.mathrixdrive.fr
+  APP_TIMEZONE: Europe/Paris
+
+  # Database
+  # --------
+  DB_CONNECTION: mysql-master
+  DB_HOST: 10.73.80.5
+  DB_PORT: "3306"
+  DB_DATABASE: dev-mathrix-drive
+  DB_USERNAME: dev-drive
+  # DB_PASSWORD: secret
+
+  # Cache
+  # -----
+  CACHE_DRIVER: database
+  CACHE_PREFIX: ""
+
+  # Queue
+  # -----
+  QUEUE_DRIVER: database
+
+  # Sentry
+  # ------
+  SENTRY_DSN: https://7602c9fbe816493cb7d25800e3cd8d2a@sentry.mathrix.fr/7
+
+  # Mailgun
+  # -------
+  #MAILGUN_DOMAIN: sandbox0aa19ceedf694eff93133d0650048b38.mailgun.org
+  # MAILGUN_SECRET: secret
+
+  # Facebook App
+  # ------------
+  #FACEBOOK_APP_ID: "422506811272428"
+  #FACEBOOK_APP_SECRET: ***REMOVED***
+  # FACEBOOK_APP_TOKEN: secret
+
+  # Google Analytics
+  # ----------------
+  ANALYTICS_ID: UA-62513242-5
+
+  # Google Stackdriver Logging
+  # --------------------------
+  LOG_CHANNEL: stackdriver
+
+  # Google Cloud Storage
+  # --------------------
+  GOOGLE_CLOUD_STORAGE_BUCKET: dev.cdn.mathrixdrive.fr
+
+  # Stripe
+  # ------
+  # STRIPE_SECRET: secret
+
+  # Braintree
+  # ---------
+  #BRAINTREE_ENVIRONMENT: sandbox
+  #BRAINTREE_MERCHANT_ID: 7mjzzwmq2thkzy42
+  #BRAINTREE_MERCHANT_ACCOUNT: mathrixdrivesa
+  #BRAINTREE_PUBLIC_KEY: 3ddb9n3w722b377d
+  # BRAINTREE_PRIVATE_KEY: secret

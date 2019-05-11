@@ -1,0 +1,92 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /system/sitemap
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_clear_headers Server;
+    nginx.org/server-snippets: gzip on; gzip_proxied any; gzip_types image/jpeg;
+  labels:
+    app: drive-api
+    environment: dev
+    tier: backend
+  name: dev-sitemap-ingress
+  namespace: default
+spec:
+  rules:
+  - host: dev.mathrixdrive.fr
+    http:
+      paths:
+      - backend:
+          serviceName: dev-drive-api-service
+          servicePort: 80
+        path: /sitemap.xml
+  tls:
+  - hosts:
+    - dev.mathrixdrive.fr
+    secretName: dev.mathrixdrive.fr-secret
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_clear_headers Server;
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.org/server-snippets: gzip on; gzip_proxied any; gzip_types image/jpeg;
+  labels:
+    app: drive-api
+    environment: dev
+    tier: backend
+  name: dev-education-api-ingress
+  namespace: default
+spec:
+  rules:
+  - host: dev.mathrixdrive.fr
+    http:
+      paths:
+      - backend:
+          serviceName: dev-drive-api-service
+          servicePort: 80
+        path: /api/?(.*)
+  tls:
+  - hosts:
+    - dev.mathrixdrive.fr
+    secretName: dev.mathrixdrive.fr-secret
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: "/dev.cdn.mathrixdrive.fr/$1"
+    nginx.ingress.kubernetes.io/upstream-vhost: "storage.googleapis.com"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_clear_headers Server;
+    nginx.org/server-snippets: gzip on; gzip_proxied any; gzip_types image/jpeg;
+  labels:
+    app: drive-cdn
+    environment: dev
+    tier: backend
+  name: dev-cdn-domain-ingress
+  namespace: default
+spec:
+  rules:
+  - host: dev.cdn.mathrixdrive.fr
+    http:
+      paths:
+      - backend:
+          serviceName: dev-drive-cdn-service
+          servicePort: 80
+        path: /?(.*)
+  tls:
+  - hosts:
+    - dev.cdn.mathrixdrive.fr
+    secretName: dev.cdn.mathrixdrive.fr-secret
+
+
+
+
+

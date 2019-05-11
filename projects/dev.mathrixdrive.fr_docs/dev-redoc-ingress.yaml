@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_clear_headers Server;
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.org/server-snippets: gzip on; gzip_proxied any; gzip_types image/jpeg;
+  labels:
+    app: drive-redoc
+    environment: dev
+    tier: doc
+  name: dev-drive-api-redoc-ingress
+  namespace: default
+spec:
+  rules:
+  - host: dev.mathrixdrive.fr
+    http:
+      paths:
+      - backend:
+          serviceName: dev-drive-api-redoc-service
+          servicePort: 8080
+        path: /docs/?(.*)
+      - backend:
+          serviceName: dev-drive-api-redoc-service
+          servicePort: 8080
+        path: /docs
+  tls:
+  - hosts:
+    - dev.mathrixdrive.fr
+    secretName: dev.mathrixdrive.fr-secret
+

@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: drive-redoc
+    environment: dev
+    tier: doc
+  name: dev-drive-api-redoc-deployment
+  namespace: default
+spec:
+  progressDeadlineSeconds: 60
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: drive-api-redoc
+      environment: dev
+      tier: doc
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: drive-api-redoc
+        environment: dev
+        tier: doc
+    spec:
+      containers:
+      - image: eu.gcr.io/mathrix-drive/drive-api-redoc:latest-dev
+        imagePullPolicy: IfNotPresent
+        name: dev-drive-api-redoc
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 10
+
