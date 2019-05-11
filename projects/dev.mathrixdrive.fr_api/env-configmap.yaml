@@ -15,10 +15,10 @@ data:
 
   # Database
   # --------
-  DB_CONNECTION: mysql-master
-  DB_HOST: 10.73.80.5
+  DB_CONNECTION: mysql
+  DB_HOST: 10.98.80.3
   DB_PORT: "3306"
-  DB_DATABASE: dev-mathrix-drive
+  DB_DATABASE: dev_mathrix_drive
   DB_USERNAME: dev-drive
   # DB_PASSWORD: secret
 
