@@ -10,7 +10,7 @@ metadata:
   namespace: default
 spec:
   progressDeadlineSeconds: 60
-  replicas: 8
+  replicas: 1
   selector:
     matchLabels:
       app: drive-api
@@ -35,7 +35,7 @@ spec:
       - name: server
         image: eu.gcr.io/mathrix-education/drive-api:latest-master
         imagePullPolicy: Always
-        args: [server]
+        #args: [server]
         envFrom:
         - configMapRef: 
             name: master-api-env-configmap
