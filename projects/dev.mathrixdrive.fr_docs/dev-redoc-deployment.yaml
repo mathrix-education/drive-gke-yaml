@@ -13,7 +13,7 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: drive-api-redoc
+      app: drive-redoc
       environment: dev
       tier: doc
   strategy:
@@ -25,12 +25,12 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: drive-api-redoc
+        app: drive-redoc
         environment: dev
         tier: doc
     spec:
       containers:
-      - image: eu.gcr.io/mathrix-drive/drive-api-redoc:latest-dev
+      - image: eu.gcr.io/mathrix-education/education-api-docs:latest-dev
         imagePullPolicy: IfNotPresent
         name: dev-drive-api-redoc
         ports:

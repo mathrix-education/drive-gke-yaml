@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: worker
-        image: eu.gcr.io/mathrix-drive/drive-api:latest-master
+        image: eu.gcr.io/mathrix-education/drive-api:latest-master
         imagePullPolicy: Always
         args: [worker]
         envFrom:

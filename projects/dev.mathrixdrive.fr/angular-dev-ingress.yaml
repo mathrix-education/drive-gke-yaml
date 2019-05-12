@@ -12,12 +12,12 @@ metadata:
   labels:
     app: drive-angular
     environment: dev
-    tier: backend
+    tier: frontend
   name: dev-drive-angular-ingress
   namespace: default
 spec:
   rules:
-  - host: dev.mathrixdrive.fr
+  - host: drive.mathrix.fr
     http:
       paths:
       - backend:
@@ -26,7 +26,7 @@ spec:
         path: /
   tls:
   - hosts:
-    - dev.mathrixdrive.fr
-    secretName: dev.mathrixdrive.fr-secret
+    - drive.mathrix.fr
+    secretName: drive.mathrix.fr-secret
 
 

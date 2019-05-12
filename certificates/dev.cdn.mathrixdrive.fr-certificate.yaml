@@ -1,19 +1,19 @@
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
-  name: dev.cdn.mathrix.fr-certificate
+  name: dev.cdn.mathrixdrive.fr-certificate
   namespace: default
 spec:
-  secretName: dev.cdn.mathrix.fr-secret
+  secretName: dev.cdn.mathrixdrive.fr-secret
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod
-  commonName: dev.cdn.mathrix.fr
+  commonName: dev.cdn.mathrixdrive.fr
   dnsNames:
-  - dev.cdn.mathrix.fr
+  - dev.cdn.mathrixdrive.fr
   acme:
     config:
     - dns01:
         provider: clouddns
       domains:
-      - dev.cdn.mathrix.fr
+      - dev.cdn.mathrixdrive.fr

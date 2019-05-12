@@ -14,7 +14,7 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: drive-api-redoc
+    app: drive-redoc
     environment: dev
     tier: doc
   sessionAffinity: None

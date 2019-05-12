@@ -15,7 +15,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: dev.mathrixdrive.fr
+  - host: drive.mathrix.fr
     http:
       paths:
       - backend:
@@ -28,6 +28,6 @@ spec:
         path: /docs
   tls:
   - hosts:
-    - dev.mathrixdrive.fr
-    secretName: dev.mathrixdrive.fr-secret
+    - drive.mathrix.fr
+    secretName: drive.mathrix.fr-secret
 

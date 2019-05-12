@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: angular
-        image: eu.gcr.io/mathrix-drive/drive-angular:latest-master
+        image: eu.gcr.io/mathrix-education/drive-angular:latest-master
         imagePullPolicy: Always
         resources:
           requests:
